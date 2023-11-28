@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _scheduleNotification() async {
-    NotificationApi.scheduleNotificationFromApi();
+    // NotificationApi.scheduleNotificationFromApi();
   }
 
   @override
@@ -51,6 +51,20 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Text('Home Screen'),
             SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                // Panggil fungsi untuk memunculkan notifikasi
+                print('Munculkan notifikasi');
+                NotificationApi.showScheduleNotification(
+                  id: 0,
+                  title: 'Absensi Reminder',
+                  body: 'Jangan lupa untuk absensi pulang',
+                  payload: 'absensi_payload_in',
+                  schedule: DateTime.now().add(Duration(seconds: 5)),
+                );
+              },
+              child: Text('Munculkan Notifikasi'),
+            ),
           ],
         ),
       ),
